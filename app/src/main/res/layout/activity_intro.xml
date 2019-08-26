@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".intro">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/bookstore"
+        android:scaleType="centerCrop" />
+
+    <TextView  android:id="@+id/MyView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Coders Library"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"/>
+
+    <EditText
+        android:id="@+id/EditName"
+        android:layout_height="wrap_content"
+        android:hint="Your name"
+        android:inputType="textPersonName"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="fill_parent"
+        android:textColor="@color/colorAccent">
+    </EditText>
+
+    <Button
+        android:id="@+id/welcomeView1button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Welcome"
+        android:textColor="@color/colorTextIcons" />
+</RelativeLayout>
