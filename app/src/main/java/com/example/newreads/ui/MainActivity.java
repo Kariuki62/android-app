@@ -1,13 +1,15 @@
-package com.example.newreads;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.newreads.ui;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.newreads.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,16 +17,16 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.bookstorebutton) Button mBookStoreButton;
+    @BindView(R.id.EnterBookName)
+    EditText mEnterBookName;
     @BindView(R.id.appNameTextView) TextView mAppNameTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-//        Typeface pacificFont = Typeface.createFromAsset(getAssets(), "fonts/pacific.ttf");
-//        mAppNameTextView.setTypeface(pacificFont);
 
         mBookStoreButton.setOnClickListener(this);
     }
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v == mBookStoreButton) {
             String location = mAppNameTextView.getText().toString();
             Intent intent = new Intent(MainActivity.this, books.class);
-            intent.putExtra("books", location);
+            intent.putExtra("", location);
             startActivity(intent);
         }
     }
