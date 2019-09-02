@@ -1,21 +1,26 @@
-package com.example.newreads;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.newreads.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.newreads.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class books extends AppCompatActivity {
-    @BindView(R.id.booksTextView) TextView mTextView;
-    @BindView(R.id.listView) ListView mListView;
-    private String[] books = new String[]{"Android Point", "purple", "azkaban", "gatsby", "flights"};
+    @BindView(R.id.booksTextView)
+    TextView mTextView;
+    @BindView(R.id.listView)
+    ListView mListView;
+
+
+    private String[] books = new String[]{};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +28,7 @@ public class books extends AppCompatActivity {
         setContentView(R.layout.activity_books);
         ButterKnife.bind(this);
 
-        mTextView= (TextView) findViewById(R.id.booksTextView);
+        mTextView = (TextView) findViewById(R.id.booksTextView);
         mListView = (ListView) findViewById(R.id.listView);
 
 
@@ -33,6 +38,7 @@ public class books extends AppCompatActivity {
         Intent intent = getIntent();
         String location = intent.getStringExtra("books");
         mTextView.setText("Here are all the books: ");
+
 
     }
 }
