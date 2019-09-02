@@ -9,16 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".books">
+        <activity android:name=".ui.l"></activity>
+        <activity android:name=".ui.library"></activity>
+        <activity android:name=".ui.books">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-
-        </activity>
-        <activity android:name=".intro">
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.intro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
