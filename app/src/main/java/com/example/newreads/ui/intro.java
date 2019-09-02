@@ -1,13 +1,14 @@
-package com.example.newreads;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.newreads.ui;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.newreads.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
