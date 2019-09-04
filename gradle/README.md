@@ -10,7 +10,7 @@ An Android app that enables users to search for their favorite books from a libr
 
 ## Technologies and Frameworks Used
 Java 11
-
+Good Reads Api
 Android Studio
 
 ButterKnife Dependencies
