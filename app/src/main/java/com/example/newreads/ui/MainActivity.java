@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,9 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v == mBookStoreButton) {
-            String location = mAppNameTextView.getText().toString();
-            Intent intent = new Intent(MainActivity.this, books.class);
-            intent.putExtra("", location);
+            Toast.makeText(this, R.string.app_name, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, library.class);
+            intent.putExtra("he", mEnterBookName.getText().toString());
             startActivity(intent);
         }
     }

@@ -10,7 +10,6 @@ import com.google.gson.reflect.TypeToken;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.XML;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -29,18 +28,17 @@ public class ReadService {
     private static final String TAG = ReadService.class.getSimpleName();
 
     public static void findTitle(String q, Callback callback) {
-        String secret = "secret";
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.GOODREADS_BASE_URL).newBuilder();
-        urlBuilder.addQueryParameter(Constants.GOODREADS_KEY_PARAMETER,Constants.GOODREADS_TOKEN);
         urlBuilder.addQueryParameter(Constants.GOODREADS_BOOKS_QUERY_PARAMETER, q);
         String url = urlBuilder.build().toString();
         Log.e(TAG, url);
 
         Request request = new Request.Builder()
                 .url(url)
+                .header("key", Constants.GOODREADS_TOKEN)
                 .build();
 
         Call call = client.newCall(request);
@@ -53,8 +51,8 @@ public class ReadService {
 
         try {
             String xmlData = response.body().string();
-            JSONObject obj = XML.toJSONObject(xmlData);
-            JSONArray worksJSONArray = obj.getJSONObject("search").getJSONArray("results");
+            JSONObject obj = new JSONObject(xmlData);
+            JSONArray worksJSONArray = obj.getJSONArray("results");
             if (response.isSuccessful()){
                 Type listType = new TypeToken<List<Bookss>>(){}.getType();
                 books = gson.fromJson(worksJSONArray.toString(),listType);

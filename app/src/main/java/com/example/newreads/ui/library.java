@@ -35,7 +35,7 @@ public class library extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
         ButterKnife.bind(this);
-        String title = "the monk";
+        String title = "harry potter";
         getTitle(title);
 
 
@@ -55,7 +55,7 @@ public class library extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) {
                     books = readService.processResults(response);
-                    library.this.runOnUiThread(new Runnable() {
+                    library.this.runOnUiThread(new Runnable(){
                         @Override
                         public void run() {
                             mAdapter = new LibraryListAdapter(getApplicationContext(), books);
