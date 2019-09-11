@@ -33,12 +33,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
-        if(v == mBookStoreButton) {
-            Toast.makeText(this, R.string.app_name, Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(MainActivity.this, library.class);
-            intent.putExtra("he", mEnterBookName.getText().toString());
-            startActivity(intent);
+        public void onClick(View v) {
+            if(v == mBookStoreButton) {
+                Toast.makeText(this, R.string.app_name, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, library.class);
+                intent.putExtra("he", mEnterBookName.getText().toString());
+                startActivity(intent);
+            }
         }
-    }
 }

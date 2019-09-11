@@ -1,77 +1,106 @@
 package com.example.newreads.ui;
 
 
-import android.content.Intent;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.newreads.R;
+
 import com.example.newreads.adapter.LibraryListAdapter;
 import com.example.newreads.models.Bookss;
-import com.example.newreads.service.ReadService;
 
-import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+
+import static com.example.newreads.ui.Constants.GOODREADS_BASE_URL;
 
 public class library extends AppCompatActivity {
+
     public static final String TAG = library.class.getSimpleName();
 
-    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    private LibraryListAdapter mAdapter;
-    private ArrayList<Bookss> books = new ArrayList<>();
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private ArrayList<Bookss> books;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
         ButterKnife.bind(this);
-        String title = "harry potter";
-        getTitle(title);
 
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Intent intent = getIntent();
-        String location = intent.getStringExtra("library");
-
+        books = new ArrayList<>();
+        loadRecyclerViewData();
     }
-    private void getTitle(String title){
-            final ReadService readService = new ReadService();
-            readService.findTitle(title, new Callback() {
 
-                @Override
-                public void onFailure(okhttp3.Call call, IOException e) {
-                    e.printStackTrace();
-                }
+    private void loadRecyclerViewData() {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading Data");
+        progressDialog.show();
 
-                @Override
-                public void onResponse(Call call, Response response) {
-                    books = readService.processResults(response);
-                    library.this.runOnUiThread(new Runnable(){
-                        @Override
-                        public void run() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                GOODREADS_BASE_URL,
+
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse (String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray array = jsonObject.getJSONArray("items");
+
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject o = array.getJSONObject(i);
+
+                                JSONObject volumeInfo = o.getJSONObject("volumeInfo");
+                                Bookss bookss = new Bookss(
+                                         o.getString("kind"),
+                                        o.getString("etag"),
+                                        o.getString("id")
+                                );
+
+                                    books.add(bookss);
+
+                            }
                             mAdapter = new LibraryListAdapter(getApplicationContext(), books);
                             mRecyclerView.setAdapter(mAdapter);
-                            RecyclerView.LayoutManager layoutManager =
-                                    new LinearLayoutManager(library.this);
-                            mRecyclerView.setLayoutManager(layoutManager);
-                            mRecyclerView.setHasFixedSize(true);
 
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                }
-            });
-        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
-
-
-
-
+    }

@@ -48,7 +48,6 @@ public class ReadService {
     public static ArrayList<Bookss> processResults(Response response) {
         ArrayList<Bookss> books = new ArrayList<>();
         Gson gson = new Gson();
-
         try {
             String xmlData = response.body().string();
             JSONObject obj = new JSONObject(xmlData);

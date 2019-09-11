@@ -1,15 +1,18 @@
 package com.example.newreads.models;
 
+import java.util.ArrayList;
+
 public class Bookss {
     private String Title;
     private String Author;
-    private int id;
+    private String id;
 
 
-    public Bookss(String title, String author, int id) {
-        Title = title;
-        Author = author;
-        this.id = id;
+
+    public Bookss(String title, String author, String id) {
+       this.Title =title;
+       this.Author = author;
+       this.id = id;
     }
 
     public String getTitle() {
@@ -20,7 +23,8 @@ public class Bookss {
         return Author;
     }
 
-    public int getId() {
-        return id;
-    }
+    public String getId() {return id;}
+
+
+
 }
