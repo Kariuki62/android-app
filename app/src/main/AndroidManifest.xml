@@ -10,14 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.library"></activity>
-        <activity android:name=".ui.books">
+        <activity android:name=".ui.library1"></activity>
+        <activity android:name=".ui.books1">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.intro">
+        <activity android:name=".ui.intro1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
