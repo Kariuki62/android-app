@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "350605289765",
+    "firebase_url": "https://android-app-af53a.firebaseio.com",
+    "project_id": "android-app-af53a",
+    "storage_bucket": "android-app-af53a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350605289765:android:3765ac64fdbd92fd46d2cc",
+        "android_client_info": {
+          "package_name": "com.example.newreads"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350605289765-g4s7026irquba34422tq4k3sg61ebvj4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1aQq3rVbMYnGnlmOpS5a0wbnsGSWHTJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350605289765-g4s7026irquba34422tq4k3sg61ebvj4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
