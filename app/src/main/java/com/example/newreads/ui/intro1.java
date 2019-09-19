@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.newreads.R;
 import com.example.newreads.constants.Constants1;
 import com.example.newreads.signup.LoginActivity;
@@ -50,6 +51,7 @@ public class intro1 extends AppCompatActivity implements View.OnClickListener{
             Intent intent = new Intent(intro1.this, MainActivity.class);
             intent.putExtra("MainActivity",location);
             startActivity(intent);
+            Animatoo.animateInAndOut(this);
         }
     }
 

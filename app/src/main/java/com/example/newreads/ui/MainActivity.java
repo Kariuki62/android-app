@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.newreads.R;
 import com.example.newreads.constants.Constants1;
 import com.example.newreads.signup.LoginActivity;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, library1.class);
                 intent.putExtra("he", mEnterBookName.getText().toString());
                 startActivity(intent);
+                Animatoo.animateSpin(this);
             }
         }
 
