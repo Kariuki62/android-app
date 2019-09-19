@@ -1,3 +1,5 @@
+package com.example.newreads.adapter;
+
 import android.content.Context;
 import android.widget.ArrayAdapter;
 

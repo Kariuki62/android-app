@@ -4,24 +4,29 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newreads.R;
+import com.example.newreads.constants.Constants1;
+import com.example.newreads.signup.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.internal.Constants;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
 
     @BindView(R.id.bookstorebutton) Button mBookStoreButton;
     @BindView(R.id.EnterBookName)
@@ -35,10 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
 
         mBookStoreButton.setOnClickListener(this);
+
+
+
     }
 
     @Override
@@ -50,8 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         }
-    private void addToSharedPreferences(String books) {
-        mEditor.putString(Constants1.GOODREADS_TOKEN,books).apply();
-    }
+
+
+
 
 }

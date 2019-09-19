@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@drawable/bacdesign"
+    android:layout_marginTop="10dp"
+    android:padding="3dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/restaurantImageView"
+        app:srcCompat="@drawable/books"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/bookVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:text="@string/book_volume"
+            android:textColor="@color/colorPrimaryLight"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/etag"
+            android:id="@+id/categoryTextView"
+            android:layout_below="@+id/restaurantNameTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="italic"
+            android:textColor="@color/colorPrimaryLight"/>
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/id"
+                android:id="@+id/ratingTextView"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="false"
+                android:textColor="@color/colorPrimaryLight"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
